@@ -3,12 +3,10 @@ import java.*;
 
 class Chairs{
     public static void main(String[] args) {
-        int arr[] = {1,4,5,2,7,8};
+        int arr[] = {1,2,5,4,3,2,1,6};
         int n = arr.length;
         int ctr = 0;
         int m1=0,m2=0;
-        
-        
         for(int i=0;i<n;i++){
             m1 = ngreat(i,arr);
             if(m1 != -1){
