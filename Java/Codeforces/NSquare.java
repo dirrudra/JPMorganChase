@@ -5,78 +5,89 @@ import java.util.Scanner;
 public class NSquare {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int t = scanner.nextInt();
-        
-        for (int testCase = 0; testCase < t; testCase++) {
-            int n = scanner.nextInt();
-            
-            for (int i = 0; i < (1 << n); i++) {
-                for (int j = 0; j < (1 << n); j++) {
-                    if ((i & (i - 1)) == 0 && (j & (j - 1)) == 0) {
-                        System.out.print("#");
-                    } else {
-                        System.out.print(".");
+        int n = scanner.nextInt();
+        boolean starths = true;
+
+        int rowctr=0;
+        for(int i=0;i<n*2;i++){
+            // for(int k=0;k<2;k++){
+                int ctr = 0;
+                char ch[] =new char[n*2];
+                int chctr = 0;
+
+                for(int j = 0;j<n*2;j++){
+                    if (starths == true){
+                        ctr++;
+                        // System.out.print("#");
+                        ch[chctr] = '#';
+                    }
+                    if(starths == false){
+                        // System.out.print(".");
+                        ctr++;
+                        ch[chctr] = '.';
+
+                    }
+                    if(ctr%2==0){
+                        ctr=0;
+                        starths = !starths;
+                    }
+                    chctr++;
+                }
+                if(n%2==0){
+                    rowctr++;
+                    if(rowctr%2==0){
+                        starths = !starths;
+                        rowctr = 0;
                     }
                 }
+                else{
+                    if(rowctr%2==0){
+                        starths = !starths;
+                        rowctr = 0;
+                    }
+                    rowctr++;
+                }
+                
+                String st = new String(ch);
+                System.out.print(st);
+
+                // System.out.print(st);
+
+
+                // }
                 System.out.println();
             }
-        }
+        
         
         scanner.close();
     }
 }
-
 
 // package Codeforces;
 // import java.util.Scanner;
 
 // public class NSquare {
 //     public static void main(String[] args) {
-//         Scanner sc = new Scanner(System.in);
-//         boolean sw = true;
-//         int n = sc.nextInt();
-//         int ctr1 = 0;
-//         int ctr2 = 0;
+//         Scanner scanner = new Scanner(System.in);
+//         int n = scanner.nextInt();
 
-//         for(int i=0;i<n*2;i++){
-//             for(int j=0;j<n*2;j++){
-//                 if(sw == true){
-//                     if(ctr1<=(n/2)){
-//                     System.out.print("#");
-                    
-//                     ctr1++;
-//                     }else{
-//                         if(ctr2 <=(n/2) ){
-//                             System.out.print(".");
-//                             ctr2++;
-//                         }
-//                     }
-//                     if(ctr1 == ((n/2)+1) && ctr2== ((n/2)+1)){
-//                         ctr1 = 0;
-//                         ctr2 = 0;
-//                         sw = false;
-//                     }
-//                 }else if(sw == false){
-//                     if(ctr1<=(n/2)){
-//                     System.out.print(".");
-                    
-//                     ctr1++;
-//                     }else{
-//                         if(ctr2 <=(n/2) ){
-//                             System.out.print("#");
-//                             ctr2++;
-//                         }
-//                     }
-//                     if(ctr1 == (n/2)+1 && ctr2== (n/2)+1){
-//                         ctr1 = 0;
-//                         ctr2 = 0;
-//                         sw = true;
-//                     }
-//                 }    
+//         for (int i = 0; i < n; i++) {
+//             // Print each row twice
+//             for (int k = 0; k < 2; k++) {
+//                 // Toggle the starting character for each row
+//                 char startChar = (i % 2 == 0) ? '#' : '.';
+
+//                 // Double each character in the row
+//                 for (int j = 0; j < n * 2; j++) {
+//                     char ch = (j % 2 == 0) ? startChar : (startChar == '#') ? '.' : '#';
+//                     System.out.print(ch);
+//                     System.out.print(ch); // Print each character twice
+//                 }
+//                 System.out.println(); // Move to the next line after each row
 //             }
-//             System.out.println();
 //         }
+
+//         scanner.close();
 //     }
-    
 // }
 
